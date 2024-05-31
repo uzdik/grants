@@ -48,71 +48,8 @@
   <noscript><div><img src="https://mc.yandex.ru/watch/97282879" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1512557646713967" crossorigin="anonymous"></script>
-
-  <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-        import { getAuth, signInWithEmailAndPassword,  signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"; 
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAEZ3wZZfUI7dZdUWnDZrhb2GxjZ3rqOL8",
-    authDomain: "uzdik-login.firebaseapp.com",
-    projectId: "uzdik-login",
-    storageBucket: "uzdik-login.appspot.com",
-    messagingSenderId: "449366953684",
-    appId: "1:449366953684:web:a49df1df53499dbca7b541",
-    measurementId: "G-23VBT7907F"
-  };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    window.login = function() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        document.getElementById('login').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-        loadProtectedContent();
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  }
-
-  window.logout = function() {
-    signOut(auth).then(() => {
-      document.getElementById('login').style.display = 'block';
-      document.getElementById('content').style.display = 'none';
-    }).catch((error) => {
-      alert(error.message);
-    });
-  }
-
-  window.onload = function() {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        document.getElementById('login').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-        loadProtectedContent();
-      } else {
-        document.getElementById('login').style.display = 'block';
-        document.getElementById('content').style.display = 'none';
-      }
-    });
-  }
-
-  function loadProtectedContent() {
-    // Simulate an API call to get protected content
-    // Replace with actual API call to your server
-    setTimeout(() => {
-      document.getElementById('protected-content').innerHTML = 'Арнайы бетке қош келдіңіз!<br>Менің банк шотым: 1234567890';
-    }, 500); // Simulate network delay
-  }
-  </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="module" src="/scripts/auth.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -135,6 +72,7 @@
           <a class="page-link" href="/audiobooks/">Аудиокітаптар</a>
           <a class="page-link" href="/esepter/">Есептер</a>
           <a class="page-link" href="/jobalar/">Жобалар</a>
+          <a class="page-link" id="login-logout-link" href="#">Кіру</a>
         </div>
       </nav>
     </div>
@@ -150,12 +88,10 @@
       </div>
       <div id="content" style="display:none;">
         <h1 class="page-heading">Арнайы бет</h1>
-	<div id="protected-content"></div>
-	<br><a href="#" onclick="logout()">Шығу</a>
+        <div id="protected-content"></div>
       </div>
     </div>
   </main>
-
   <footer class="site-footer h-card">
     <data class="u-url" href="/"></data>
     <div class="wrapper">
