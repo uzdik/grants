@@ -52,7 +52,7 @@
   <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"; 
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"; 
 
   const firebaseConfig = {
     apiKey: "AIzaSyAEZ3wZZfUI7dZdUWnDZrhb2GxjZ3rqOL8",
@@ -63,25 +63,36 @@
     appId: "1:449366953684:web:a49df1df53499dbca7b541",
     measurementId: "G-23VBT7907F"
   };
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth(app); 
 
-        window.login = function() {
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    document.getElementById('login').style.display = 'none';
-                    document.getElementById('content').style.display = 'block';
-                })
-                .catch((error) => {
-                    var errorMessage = error.message;
-                    alert(errorMessage);
-                });
+    window.login = function() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          document.getElementById('login').style.display = 'none';
+          document.getElementById('content').style.display = 'block';
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    }
+
+    window.onload = function() {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          document.getElementById('login').style.display = 'none';
+          document.getElementById('content').style.display = 'block';
+        } else {
+          document.getElementById('login').style.display = 'block';
+          document.getElementById('content').style.display = 'none';
         }
-    </script>
+      });
+    }
+  </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
