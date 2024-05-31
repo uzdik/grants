@@ -80,7 +80,14 @@
           alert(error.message);
         });
     }
-
+window.logout = function() {
+    signOut(auth).then(() => {
+      document.getElementById('login').style.display = 'block';
+      document.getElementById('content').style.display = 'none';
+    }).catch((error) => {
+      alert(error.message);
+    });
+  }
     window.onload = function() {
       onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -92,6 +99,7 @@
         }
       });
     }
+
   </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -125,14 +133,15 @@
     <div class="wrapper">
       <div id="login">
         <h1 class="page-heading">Login</h1>
-        <input type="email" id="email" placeholder="Email" />
-        <input type="password" id="password" placeholder="Password" />
-        <button onclick="login()">Login</button>
+        <input type="email" id="email" placeholder="e-пошта" />
+        <input type="password" id="password" placeholder="құпиясөз" />
+        <button onclick="login()">Кіру</button>
       </div>
       <div id="content" style="display:none;">
         <h1 class="page-heading">Арнайы бет</h1>
         <!-- Your protected content goes here -->
         Арнайы бетке қош келдіңіз!
+	<br><a href="#" onclick="logout()">Шығу</a>
       </div>
     </div>
   </main>
