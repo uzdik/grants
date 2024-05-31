@@ -20,44 +20,25 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const auth = getAuth(app);
-auth.setPersistence(auth.Persistence.LOCAL);
+	auth.setPersistence(auth.Persistence.LOCAL);
 
-// Check if the user is already logged in
-// This listener checks the authentication state and automatically redirects users to the content page if they are already logged in
-// You can place this code in a separate file or at the beginning of your HTML file
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        // User is signed in, redirect to the content page
-        document.getElementById('login').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-    } else {
-        // User is not signed in, show the login form
-        document.getElementById('login').style.display = 'block';
-        document.getElementById('content').style.display = 'none';
-    }
-});
+	onAuthStateChanged(auth, (user) => {
+    		if (user) {
+       		        document.getElementById('login').style.display = 'none';
+        		document.getElementById('content').style.display = 'block';
+   		 } else {
+        	        document.getElementById('login').style.display = 'block';
+        		document.getElementById('content').style.display = 'none';
+    		}
+	});
 
         window.login = function() {
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
-
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     document.getElementById('login').style.display = 'none';
                     document.getElementById('content').style.display = 'block';
-                })
-                .catch((error) => {
-                    alert(error.message);
-                });
-        }
-
-        window.signup = function() {
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    alert("User created successfully!");
                 })
                 .catch((error) => {
                     alert(error.message);
@@ -74,7 +55,7 @@ onAuthStateChanged(auth, (user) => {
         <button onclick="signup()">Sign Up</button>
     </div>
     <div id="content" style="display:none;">
-        <h1>Welcome to Real Estate</h1>
+        <h1>Welcome!</h1>
     </div>
 </body>
 </html>
