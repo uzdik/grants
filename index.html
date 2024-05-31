@@ -2,27 +2,24 @@
 <html>
 <head>
     <title>Login</title>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+<script type="module">
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyAEZ3wZZfUI7dZdUWnDZrhb2GxjZ3rqOL8",
-            authDomain: "uzdik-login.firebaseapp.com",
-            projectId: "uzdik-login",
-            storageBucket: "uzdik-login.appspot.com",
-            messagingSenderId: "449366953684",
-            appId: "1:449366953684:web:e39811a883025770a7b541",
-            measurementId: "G-NJ4WX57Q2G"
-        };
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth(app);
+  const firebaseConfig = {
+    apiKey: "AIzaSyAEZ3wZZfUI7dZdUWnDZrhb2GxjZ3rqOL8",
+    authDomain: "uzdik-login.firebaseapp.com",
+    projectId: "uzdik-login",
+    storageBucket: "uzdik-login.appspot.com",
+    messagingSenderId: "449366953684",
+    appId: "1:449366953684:web:e39811a883025770a7b541",
+    measurementId: "G-NJ4WX57Q2G"
+  };
 
-        // Login function
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
         window.login = function() {
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
