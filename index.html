@@ -5,27 +5,10 @@
   <meta name="google-adsense-account" content="ca-pub-1512557646713967">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Begin Jekyll SEO tag v2.8.0 -->
-  <title>Login | Үздік GitHub</title>
-  <meta name="generator" content="Jekyll v3.9.5" />
-  <meta property="og:title" content="Есептер" />
-  <meta property="og:locale" content="en_US" />
-  <link rel="canonical" href="https://uzdik.github.io/esepter/" />
-  <meta property="og:url" content="https://uzdik.github.io/esepter/" />
-  <meta property="og:site_name" content="Үздік GitHub" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary" />
-  <meta property="twitter:title" content="Есептер" />
-  <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebPage","headline":"Есептер","url":"https://uzdik.github.io/esepter/"}
-  </script>
-  <!-- End Jekyll SEO tag -->
-
+  <title>Арнайы бет | Үздік GitHub</title>
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
   <link type="application/atom+xml" rel="alternate" href="https://uzdik.github.io/feed.xml" title="Үздік GitHub" />
-
   <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
@@ -54,7 +37,6 @@
     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
     ym(97282879, "init", {
           clickmap:true,
           trackLinks:true,
@@ -65,6 +47,41 @@
   <noscript><div><img src="https://mc.yandex.ru/watch/97282879" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1512557646713967" crossorigin="anonymous"></script>
+
+  <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"; 
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAEZ3wZZfUI7dZdUWnDZrhb2GxjZ3rqOL8",
+    authDomain: "uzdik-login.firebaseapp.com",
+    projectId: "uzdik-login",
+    storageBucket: "uzdik-login.appspot.com",
+    messagingSenderId: "449366953684",
+    appId: "1:449366953684:web:a49df1df53499dbca7b541",
+    measurementId: "G-23VBT7907F"
+  };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app); 
+
+        window.login = function() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    document.getElementById('login').style.display = 'none';
+                    document.getElementById('content').style.display = 'block';
+                })
+                .catch((error) => {
+                    var errorMessage = error.message;
+                    alert(errorMessage);
+                });
+        }
+    </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -101,9 +118,9 @@
         <button onclick="login()">Login</button>
       </div>
       <div id="content" style="display:none;">
-        <h1 class="page-heading">Welcome to Real Estate</h1>
+        <h1 class="page-heading">Арнайы бет</h1>
         <!-- Your protected content goes here -->
-        korinbei me?
+        Арнайы бетке қош келдіңіз!
       </div>
     </div>
   </main>
@@ -170,45 +187,5 @@
       </div>
     </div>
   </footer>
-
-  <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"; 
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAEZ3wZZfUI7dZdUWnDZrhb2GxjZ3rqOL8",
-    authDomain: "uzdik-login.firebaseapp.com",
-    projectId: "uzdik-login",
-    storageBucket: "uzdik-login.appspot.com",
-    messagingSenderId: "449366953684",
-    appId: "1:449366953684:web:a49df1df53499dbca7b541",
-    measurementId: "G-23VBT7907F"
-  };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth(app); // Initialize the auth object
-
-        window.login = function() {
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-
-            signInWithEmailAndPassword(auth, email, password) // Use signInWithEmailAndPassword function
-                .then((userCredential) => {
-                    // Signed in
-                    document.getElementById('login').style.display = 'none';
-                    document.getElementById('content').style.display = 'block';
-                })
-                .catch((error) => {
-                    var errorMessage = error.message;
-                    alert(errorMessage);
-                });
-        }
-    </script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="/scripts/youtube-embed.js"></script>
-  <script src="/scripts/movements.js"></script>
 </body>
 </html>
