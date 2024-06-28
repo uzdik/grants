@@ -5,10 +5,42 @@
   <meta name="google-adsense-account" content="ca-pub-1512557646713967">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Арнайы бет | Үздік GitHub</title>
+<title>Гранттар 2024 | Үздік GitHub</title>
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
   <link type="application/atom+xml" rel="alternate" href="https://uzdik.github.io/feed.xml" title="Үздік GitHub" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <style>
+        /* Local CSS for the table */
+        .dataTables_wrapper {
+            max-width: 100%;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+        table.dataTable, table.dataTable th, table.dataTable td {
+            font-size: 16px;  /* Smaller font size */
+        }
+        table.dataTable {
+            width: 100% !important;
+            max-width: 100%;
+        }
+        .wrapper1 {
+            max-width: calc(100% - 100px);  /* Adjusted to leave some space on the sides */
+            margin: 0 auto;
+            padding-right: 100px;
+            padding-left: 100px;
+            overflow-x: auto;  /* Ensure the wrapper can handle overflow */
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var table = $('#myT').DataTable();
+            table.search('информатика').draw();  // Set the default search term
+        });
+    </script>
+
   <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
