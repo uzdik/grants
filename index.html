@@ -110,6 +110,13 @@
       left: 75px; /* Adjust based on the width of your previous columns */
       box-shadow: 2px 0 5px -2px gray;
     }
+
+    #myT tfoot {
+        position: sticky;
+        bottom: 0;
+        background-color: white; /* Ensure background is white for visibility */
+        z-index: 2; /* Ensure it is above tbody when scrolling */
+    }
   }
 </style>
 
