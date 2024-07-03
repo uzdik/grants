@@ -43,6 +43,28 @@
       overflow-x: auto;  /* Ensure the wrapper can handle overflow */
   }
 
+  /* Set specific widths for certain columns */
+  .dataTable th:nth-child(1),
+  .dataTable td:nth-child(1) {
+      max-width: 50px;  /* Shorter columns like ID */
+  }
+
+  .dataTable th:nth-child(2),
+  .dataTable td:nth-child(2) {
+      max-width: 50px; /* Columns with short text */
+  }
+
+  .dataTable th:nth-child(3),
+  .dataTable td:nth-child(3) {
+      max-width: 20px; /* Columns with medium text */
+  }
+
+  .dataTable th:nth-child(4),
+  .dataTable td:nth-child(4) {
+      max-width: 100px; /* Columns with longer text */
+  }
+
+    
   @media screen and (max-width: 600px) {
     .wrapper1 {
       max-width: 100%;
