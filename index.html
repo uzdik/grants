@@ -23,8 +23,10 @@
           overflow-x: auto;
       }
       table.dataTable, table.dataTable th, table.dataTable td {
-          font-size: 14px;  
-          white-space: nowrap;
+        font-size: 14px; 
+        word-wrap: break-word; 
+        white-space: normal;  
+        max-width: 200px;  
       }
       table.dataTable {
           width: 100% !important;
@@ -48,6 +50,8 @@
       
         table.dataTable, table.dataTable th, table.dataTable td {
           font-size: 12px;
+          word-wrap: break-word; 
+          white-space: normal;
         }
       
         .page-content {
